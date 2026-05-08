@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journal — Tracker d'émotions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">Journal</div>
+      <div class="header-date" id="header-date"></div>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="journal">Bilan du soir</button>
+      <button class="tab" data-tab="calendar">Calendrier</button>
+      <button class="tab" data-tab="stats">Progression</button>
+    </nav>
+
+    <!-- JOURNAL -->
+    <section id="section-journal" class="section active">
+      <div class="score-hero">
+        <div class="score-display">
+          <span class="score-number" id="live-score">--</span>
+          <span class="score-denom">/100</span>
+        </div>
+        <div class="score-band" id="score-band">Remplis les curseurs ci-dessous</div>
+      </div>
+
+      <div class="sliders-grid" id="sliders"></div>
+
+      <div class="note-block">
+        <label class="note-label">Ce que t'as vécu aujourd'hui</label>
+        <textarea id="journal-note" placeholder="Vide-toi la tête — qu'est-ce qui s'est passé, comment tu t'es senti..."></textarea>
+      </div>
+
+      <div class="toast" id="toast">Journée sauvegardée</div>
+      <button class="save-btn" id="save-btn">Sauvegarder ma journée</button>
+    </section>
+
+    <!-- CALENDRIER -->
+    <section id="section-calendar" class="section">
+      <div class="month-nav">
+        <button class="nav-btn" id="prev-month">&#8592;</button>
+        <div class="month-title" id="month-title"></div>
+        <button class="nav-btn" id="next-month">&#8594;</button>
+      </div>
+      <div class="cal-day-names">
+        <span>Dim</span><span>Lun</span><span>Mar</span>
+        <span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+
+      <div class="entry-modal" id="entry-modal">
+        <button class="modal-close" id="modal-close">&#10005;</button>
+        <div class="modal-date" id="modal-date"></div>
+        <div class="modal-score-row">
+          <div class="modal-score" id="modal-score"></div>
+          <div class="modal-band" id="modal-band"></div>
+        </div>
+        <div class="modal-metrics" id="modal-metrics"></div>
+        <div class="modal-note" id="modal-note"></div>
+        <button class="delete-btn" id="modal-delete">Supprimer cette journée</button>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section id="section-stats" class="section">
+      <div class="stat-cards" id="stat-cards"></div>
+      <div class="chart-card">
+        <div class="chart-title">Score global — 30 derniers jours</div>
+        <div class="chart-wrap"><canvas id="scoreChart" role="img" aria-label="Évolution du score quotidien"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Moyenne par catégorie</div>
+        <div class="chart-wrap radar-wrap"><canvas id="radarChart" role="img" aria-label="Radar des moyennes par catégorie"></canvas></div>
+      </div>
+      <button class="delete-btn" id="delete-all-btn">Supprimer toutes mes données</button>
+    </section>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
